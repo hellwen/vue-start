@@ -52,9 +52,6 @@
               index: 'OrderList',
               title: '订单'
             }, {
-              index: 'Table1',
-              title: '记录展示'
-            }, {
               index: 'OrderForm',
               title: '订单表'
             }, {

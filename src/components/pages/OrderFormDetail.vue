@@ -31,7 +31,11 @@
     </el-table-column>
     <el-table-column
       label="商品 ID"
-      prop="id">
+      prop="id"
+      width="100"
+      :filters="filters"
+      :filter-method="filterTag"
+      filter-placement="bottom-end">
     </el-table-column>
     <el-table-column
       label="商品名称"
@@ -43,21 +47,6 @@
     </el-table-column>
   </el-table>
 </template>
-
-<style>
-  .demo-table-expand {
-    font-size: 0;
-  }
-  .demo-table-expand label {
-    width: 90px;
-    color: #99a9bf;
-  }
-  .demo-table-expand .el-form-item {
-    margin-right: 0;
-    margin-bottom: 0;
-    width: 50%;
-  }
-</style>
 
 <script>
   export default {
@@ -95,8 +84,39 @@
           address: '上海市普陀区真北路',
           shop: '王小虎夫妻店',
           shopId: '10333'
+        }],
+        filters: [{
+          text: '12987122',
+          value: '12987122'
+        }, {
+          text: '12987123',
+          value: '12987123'
+        }, {
+          text: '12987125',
+          value: '12987125'
+        }, {
+          text: '12987126',
+          value: '12987126'
         }]
       }
+    },
+    filterTag (value, row) {
+      return row.id === value
     }
   }
 </script>
+
+<style>
+  .demo-table-expand {
+    font-size: 0;
+  }
+  .demo-table-expand label {
+    width: 90px;
+    color: #99a9bf;
+  }
+  .demo-table-expand .el-form-item {
+    margin-right: 0;
+    margin-bottom: 0;
+    width: 50%;
+  }
+</style>
