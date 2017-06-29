@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import Form1 from './Form1.vue'  
+  import Form1 from './Form1'
 
   export default {
     data () {
@@ -22,6 +22,9 @@
       handleClick (tab, event) {
         console.log(tab, event)
       }
+    },
+    compoments: {
+      Form1
     }
   }
 </script>
