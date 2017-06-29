@@ -1,16 +1,17 @@
 <template>
   <el-tabs v-model="activeName" @tab-click="handleClick">
-    <el-tab-pane label="用户管理" name="first">
-    用户管理
+    <el-tab-pane label="订单" name="first">
+      <order-form-master></order-form-master>
     </el-tab-pane>
-    <el-tab-pane label="配置管理" name="second">
-    配置管理
+    <el-tab-pane label="明细" name="second">
+      <order-form-detail></order-form-detail>
     </el-tab-pane>
   </el-tabs>
 </template>
 
 <script>
-  import Form1 from './Form1'
+  import OrderFormMaster from './OrderFormMaster'
+  import OrderFormDetail from './OrderFormDetail'
 
   export default {
     data () {
@@ -23,8 +24,8 @@
         console.log(tab, event)
       }
     },
-    compoments: {
-      Form1
+    components: {
+      OrderFormMaster, OrderFormDetail
     }
   }
 </script>
