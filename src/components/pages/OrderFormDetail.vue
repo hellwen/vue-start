@@ -1,4 +1,6 @@
 <template>
+<div>
+  <div v-for="row in tableData5">{{ row.name }}</div>
   <el-table
     :data="tableData5"
     style="width: 100%">
@@ -46,12 +48,18 @@
       prop="desc">
     </el-table-column>
   </el-table>
+</div>
 </template>
 
 <script>
   export default {
     data () {
+      // const self = this
       return {
+        style_url: '../../../static/demo/style.json',
+        lot_url: '../../../static/demo/lot.json',
+        color_url: '../../../static/demo/color.json',
+        size_url: '../../../static/demo/size.json',
         tableData5: [{
           id: '12987122',
           name: '好滋好味鸡蛋仔',
@@ -100,8 +108,22 @@
         }]
       }
     },
-    filterTag (value, row) {
-      return row.id === value
+    methods: {
+      filterTag (value, row) {
+        return row.id === value
+      },
+      getStyle (order) {
+        return ''
+      },
+      getLot (style) {
+        return ''
+      },
+      getColor (lot) {
+        return ''
+      },
+      getSize (color) {
+        return ''
+      }
     }
   }
 </script>
