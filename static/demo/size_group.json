@@ -1,13 +1,12 @@
 {
     "data": [{
-        "style": "S001",
-        "name": "长衣"
+        "size": "S"
     }, {
-        "style": "S002",
-        "name": "短袖"
+        "size": "M"
     }, {
-        "style": "S003",
-        "name": "短裤"
+        "size": "L"
+    }, {
+        "size": "XL"
     }],
     "pagination": {
         "total": 15,

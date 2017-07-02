@@ -1,5 +1,5 @@
 {
-    "list": [{
+    "data": [{
         "key": "C001",
         "size": "S",
         "quantity": 20
@@ -23,6 +23,13 @@
         "key": "C004",
         "size": "XL",
         "quantity": 29
-    }, {
-    }]
+    }],
+    "pagination": {
+        "total": 15,
+        "per_page": 15,
+        "current_page": 1,
+        "last_page": 1,
+        "from": 1,
+        "to": 15
+    }
 }

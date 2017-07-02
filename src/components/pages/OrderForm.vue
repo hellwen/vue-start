@@ -7,7 +7,7 @@
     </el-breadcrumb>
   </div>
 
-  <el-tabs v-model="activeName" @tab-click="handleClick">
+  <el-tabs v-model="activeName">
     <el-tab-pane label="订单" name="first">
       <order-form-master></order-form-master>
     </el-tab-pane>
@@ -26,11 +26,6 @@
     data () {
       return {
         activeName: 'first'
-      }
-    },
-    methods: {
-      handleClick (tab, event) {
-        console.log(tab, event)
       }
     },
     components: {

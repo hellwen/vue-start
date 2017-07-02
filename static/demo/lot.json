@@ -1,5 +1,5 @@
 {
-    "list": [{
+    "data": [{
         "style": "S001",
         "lot": "L01",
         "country": "CN",
@@ -14,5 +14,13 @@
         "lot": "L03",
         "country": "CN",
         "deliver": "2017-07-01"
-    }]
+    }],
+    "pagination": {
+        "total": 15,
+        "per_page": 15,
+        "current_page": 1,
+        "last_page": 1,
+        "from": 1,
+        "to": 15
+    }
 }

@@ -1,5 +1,5 @@
 {
-    "list": [{
+    "data": [{
         "key": "C001",
         "lot": "L01",
         "color": "red"
@@ -15,5 +15,13 @@
         "key": "C004",
         "lot": "L03",
         "color": "red"
-    }]
+    }],
+    "pagination": {
+        "total": 15,
+        "per_page": 15,
+        "current_page": 1,
+        "last_page": 1,
+        "from": 1,
+        "to": 15
+    }
 }
