@@ -17,32 +17,113 @@
     </order-lot>
   </mu-dialog>
 
-  <mu-raised-button label="template" primary @click="showTemplate"/>
+  <md-button class="md-raised md-primary" @click="showTemplate">template</md-button>
 
-  <mu-table border="1">
-    <mu-tr>
-      <mu-th>Month</mu-th>
-      <mu-th>Savings</mu-th>
-    </mu-tr>
-    <mu-tr>
-      <mu-td>January</mu-td>
-      <mu-td>ok</mu-td>
-    </mu-tr>
-    <mu-tr v-if="iTemplate">
-      <mu-td colspan="2">
-        <mu-text-field label="Lot" hintText="Lot"/>
-        <mu-text-field label="Name" hintText="Nmae"/>
-        <mu-flexbox class="mt8">
-          <mu-flexbox-item class="flex-demo">
-            <mu-text-field label="Lot" hintText="Lot"/>
-          </mu-flexbox-item>
-          <mu-flexbox-item class="flex-demo">
-            <mu-text-field label="Name" hintText="Nmae"/>
-          </mu-flexbox-item>
-        </mu-flexbox>
-      </mu-td>
-    </mu-tr>
-  </mu-table>
+  <md-table-card>
+    <md-toolbar>
+      <h1 class="md-title">Nutrition</h1>
+      <md-button class="md-icon-button">
+        <md-icon>filter_list</md-icon>
+      </md-button>
+
+      <md-button class="md-icon-button">
+        <md-icon>search</md-icon>
+      </md-button>
+    </md-toolbar>
+
+    <md-table-alternate-header md-selected-label="selected">
+      <md-button class="md-icon-button">
+        <md-icon>delete</md-icon>
+      </md-button>
+
+      <md-button class="md-icon-button">
+        <md-icon>more_vert</md-icon>
+      </md-button>
+    </md-table-alternate-header>
+
+    <md-table md-sort="calories">
+      <md-table-header>
+        <md-table-row>
+          <md-table-head md-sort-by="dessert">Dessert (100g serving)</md-table-head>
+          <md-table-head md-sort-by="type" width="100px">Type</md-table-head>
+          <md-table-head md-sort-by="calories" md-numeric md-tooltip="The total amount of food energy and the given serving size">Calories (g)</md-table-head>
+          <md-table-head md-sort-by="fat" md-numeric>Fat (g)</md-table-head>
+          <md-table-head>
+            <md-icon>message</md-icon>
+            <span>Comments</span>
+          </md-table-head>
+        </md-table-row>
+      </md-table-header>
+
+      <md-table-body>
+        <md-table-row v-for="(row, rowIndex) in nutrition" :key="rowIndex" :md-item="row" md-selection>
+          <md-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :md-numeric="columnIndex !== 'dessert' && columnIndex !== 'comment' && columnIndex !== 'type'">
+            <span v-if="columnIndex === 'comment'">{{ column }}</span>
+
+            <md-button class="md-icon-button" v-if="columnIndex === 'comment'">
+              <md-icon>edit</md-icon>
+            </md-button>
+
+            <md-select
+              placeholder="Type"
+              :name="'type' + columnIndex"
+              :id="'type' + columnIndex"
+              v-model="nutrition[rowIndex].type"
+              v-if="columnIndex === 'type'">
+              <md-option value="ice_cream">Ice Cream</md-option>
+              <md-option value="pastry">Pastry</md-option>
+              <md-option value="other">Other</md-option>
+            </md-select>
+
+            <span v-if="columnIndex !== 'type' && columnIndex !== 'comment'">
+
+              <md-input-container>
+                <label>{{ column }}</label>
+  <md-input v-model="initialValue">{{ column }}</md-input>
+</md-input-container>
+            </span>
+          </md-table-cell>
+        </md-table-row>
+      </md-table-body>
+    </md-table>
+  </md-table-card>
+
+
+  <md-table>
+    <md-table-header>
+      <md-table-row>
+        <md-table-head>Dessert (100g serving)</md-table-head>
+        <md-table-head md-numeric>Calories (g)</md-table-head>
+      </md-table-row>
+    </md-table-header>
+
+    <md-table-body>
+      <md-table-row>
+        <md-table-cell>Dessert Name</md-table-cell>
+        <md-table-cell md-numeric>10</md-table-cell>
+      </md-table-row>
+      <md-table-row v-if="iTemplate">
+        <md-table-cell colspan="2">
+          <md-input-container>
+            <label>Initial value</label>
+            <md-input v-model="initialValue"></md-input>
+          </md-input-container>
+        </md-table-cell>
+      </md-table-row>
+      <md-table-row>
+        <md-table-cell>
+          <md-input-container>
+            <md-input v-model="initialValue"></md-input>
+          </md-input-container>
+        </md-table-cell>
+        <md-table-cell md-numeric>20</md-table-cell>
+      </md-table-row>
+      <md-table-row>
+        <md-table-cell>Dessert Name</md-table-cell>
+        <md-table-cell md-numeric>12</md-table-cell>
+      </md-table-row>
+    </md-table-body>
+  </md-table>
 
   <el-table
     :data="styles.data"
@@ -130,7 +211,38 @@
         orderStyle: {},
         orderLot: {},
         iTemplate: false,
-        showCheckbox: false
+        showCheckbox: false,
+        nutrition: [{
+          dessert: 'Frozen yogurt',
+          type: 'ice_cream',
+          calories: '159',
+          fat: '6.0',
+          comment: 'Icy'
+        }, {
+          dessert: 'Ice cream sandwich',
+          type: 'ice_cream',
+          calories: '237',
+          fat: '9.0',
+          comment: 'Super Tasty'
+        }, {
+          dessert: 'Eclair',
+          type: 'pastry',
+          calories: '262',
+          fat: '16.0',
+          comment: ''
+        }, {
+          dessert: 'Cupcake',
+          type: 'pastry',
+          calories: '305',
+          fat: '3.7',
+          comment: ''
+        }, {
+          dessert: 'Gingerbread',
+          type: 'other',
+          calories: '356',
+          fat: '16.0',
+          comment: ''
+        }]
       }
     },
     methods: {
