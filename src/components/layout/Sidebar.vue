@@ -9,16 +9,16 @@
           </el-input>
            <el-tabs v-model="activeName" @tab-click="handleClick">
             <el-tab-pane  label="模块" name="moudle">
-              <el-menu mode="vertical" default-active="1" class="el-menu-vertical-demo">
-                <el-menu-item-group title="分组一">
-                  <el-menu-item index="1"><i class="el-icon-message"></i>导航一<i class="el-icon-star-off collect-icon"></i></el-menu-item>
-                  <el-menu-item index="2"><i class="el-icon-message"></i>导航二<i class="el-icon-star-off collect-icon"></i></el-menu-item>
-                </el-menu-item-group>
-                <el-menu-item-group title="分组二">
-                  <el-menu-item index="3"><i class="el-icon-message"></i>导航三<i class="el-icon-star-off collect-icon"></i></el-menu-item>
-                  <el-menu-item index="4"><i class="el-icon-message"></i>导航四<i class="el-icon-star-off collect-icon"></i></el-menu-item>
-                </el-menu-item-group>
-              </el-menu>
+
+              <template v-for="item in items">
+                 <el-menu-item-group :index="item.index" v-if="item.subs">
+                     <template slot="title"><i :class="item.icon"></i>{{ item.title }}</template>
+                     <el-menu-item v-for="(subItem,i) in item.subs" :key="i" :index="subItem.index">{{ subItem.title }}
+                       <i class="el-icon-star-off collect-icon"></i>
+                     </el-menu-item>
+                 </el-menu-item-group>
+               </template>
+
             </el-tab-pane>
             <el-tab-pane  label="收藏" name="collect">收藏</el-tab-pane>
         </el-tabs>
@@ -67,14 +67,8 @@
               index: 'OrderList',
               title: '订单'
             }, {
-              index: 'Table1',
-              title: '记录展示'
-            }, {
               index: 'OrderForm',
               title: '订单表'
-            }, {
-              index: 'vuetable',
-              title: 'Vue表格组件'
             }]
           }, {
             icon: 'el-icon-star-on',
