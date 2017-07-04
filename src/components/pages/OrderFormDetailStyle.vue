@@ -1,14 +1,19 @@
 <template>
 <div>
-  <mu-text-field label="款 号" hintText="款 号" v-model="form.style"/>
-  <mu-text-field label="名 称" hintText="名 称" v-model="form.name"/>
-  <br/>
-  <mu-flat-button label="取 消" class="demo-flat-button"
-    @click="cancel"/>
-  <mu-raised-button label="确 定" class="demo-raised-button" primary
-    @click="confirm"/>
-  <mu-raised-button label="下一步" class="demo-raised-button"
-    @click="next"/>
+  <el-form ref="form" :model="form" label-width="formLabelWidth">
+    <el-form-item label="款 号">
+      <el-input v-model="form.style"></el-input>
+    </el-form-item>
+    <el-form-item label="名 称">
+      <el-input v-model="form.name"></el-input>
+    </el-form-item>
+  </el-form>
+
+  <div slot="footer" class="dialog-footer">
+    <el-button type="text" @click="cancel">取 消</el-button>
+    <el-button type="primary" @click="confirm">确 定</el-button>
+    <el-button @click="next">下一步</el-button>
+  </div>
 </div>
 </template>
 

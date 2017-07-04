@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
     "data": [{
+=======
+    "list": [{
+>>>>>>> 4c0569bdddf72079156bc3f576f6b4c66c39f6c7
         "key": "C001",
         "lot": "L01",
         "color": "red"
@@ -15,6 +19,7 @@
         "key": "C004",
         "lot": "L03",
         "color": "red"
+<<<<<<< HEAD
     }],
     "pagination": {
         "total": 15,
@@ -24,4 +29,7 @@
         "from": 1,
         "to": 15
     }
+=======
+    }]
+>>>>>>> 4c0569bdddf72079156bc3f576f6b4c66c39f6c7
 }

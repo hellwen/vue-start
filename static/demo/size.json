@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
     "data": [{
+=======
+    "list": [{
+>>>>>>> 4c0569bdddf72079156bc3f576f6b4c66c39f6c7
         "key": "C001",
         "size": "S",
         "quantity": 20
@@ -23,6 +27,7 @@
         "key": "C004",
         "size": "XL",
         "quantity": 29
+<<<<<<< HEAD
     }],
     "pagination": {
         "total": 15,
@@ -32,4 +37,8 @@
         "from": 1,
         "to": 15
     }
+=======
+    }, {
+    }]
+>>>>>>> 4c0569bdddf72079156bc3f576f6b4c66c39f6c7
 }

@@ -1,44 +1,32 @@
 <template>
 <div>
-  <mu-text-field label="Lot" hintText="Lot" v-model="form.lot"/>
-  <mu-text-field label="国别" hintText="国别" v-model="form.country"/>
-  <mu-date-picker label="交期" container="inline" hintText="交期"
-    v-model="form.deliver"
-    autoOk/> <br/>
+  <el-form ref="form" :model="form" label-width="80px">
+    <el-form-item label="Lot">
+      <el-input v-model="form.lot"></el-input>
+    </el-form-item>
+    <el-form-item label="国别">
+      <el-input v-model="form.country"></el-input>
+    </el-form-item>
+    <el-form-item label="交期">
+      <el-date-picker
+           v-model="form.deliver"
+           type="date"
+           placeholder="选择日期">
+         </el-date-picker>
+    </el-form-item>
+  </el-form>
 
-  <mu-tabs :value="activeTab">
-    <mu-tab value="tab1" title="颜色尺码"/>
-  </mu-tabs>
-  <div v-if="activeTab === 'tab1'">
-    <mu-table ref="table" :showCheckbox="showCheckbox">
-      <mu-thead>
-        <mu-tr>
-          <mu-th>ID</mu-th>
-          <mu-th>Name</mu-th>
-        </mu-tr>
-      </mu-thead>
-      <mu-tbody>
-        <mu-tr>
-          <mu-td><mu-text-field hintText="颜色" v-model="form.lot"/></mu-td>
-          <mu-td><mu-text-field hintText="尺码" v-model="form.country"/></mu-td>
-        </mu-tr>
-        <mu-tr>
-          <mu-td><mu-text-field hintText="颜色" v-model="form.lot"/></mu-td>
-          <mu-td><mu-text-field hintText="尺码" v-model="form.country"/></mu-td>
-        </mu-tr>
-      </mu-tbody>
-    </mu-table>
-  </div>
+  <el-tabs v-model="activeTab">
+     <el-tab-pane label="颜色尺码" name="tab1">
+       颜色
+     </el-tab-pane>
+   </el-tabs>
 
   <div slot="footer" class="dialog-footer">
-    <mu-flat-button label="取 消" class="demo-flat-button"
-      @click="cancel"/>
-    <mu-raised-button label="确 定" class="demo-raised-button" primary
-      @click="confirm"/>
-    <mu-raised-button label="确认并添加" class="demo-raised-button"
-      @click="confirmAdd"/>
-      <mu-flat-button label="上一步" class="demo-flat-button"
-        @click="previous"/>
+    <el-button type="text" @click="cancel">取 消</el-button>
+    <el-button type="primary" @click="confirm">确 定</el-button>
+    <el-button @click="confirmAdd">确认并添加</el-button>
+    <el-button type="text" @click="previous">上一步</el-button>
   </div>
 </div>
 </template>
@@ -55,44 +43,7 @@
           country: '',
           deliver: ''
         },
-        formLabelWidth: '120px',
-        nutrition: [
-          {
-            dessert: 'Frozen yogurt',
-            type: 'ice_cream',
-            calories: '159',
-            fat: '6.0',
-            comment: 'Icy'
-          },
-          {
-            dessert: 'Ice cream sandwich',
-            type: 'ice_cream',
-            calories: '237',
-            fat: '9.0',
-            comment: 'Super Tasty'
-          },
-          {
-            dessert: 'Eclair',
-            type: 'pastry',
-            calories: '262',
-            fat: '16.0',
-            comment: ''
-          },
-          {
-            dessert: 'Cupcake',
-            type: 'pastry',
-            calories: '305',
-            fat: '3.7',
-            comment: ''
-          },
-          {
-            dessert: 'Gingerbread',
-            type: 'other',
-            calories: '356',
-            fat: '16.0',
-            comment: ''
-          }
-        ]
+        formLabelWidth: '120px'
       }
     },
     methods: {
