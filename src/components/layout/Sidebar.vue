@@ -45,7 +45,7 @@
           }, {
             icon: 'el-icon-date',
             index: '2',
-            title: '表单',
+            title: 'Demo',
             subs: [{
               index: 'baseform',
               title: '基本表单'
@@ -62,7 +62,7 @@
           }, {
             icon: 'el-icon-menu',
             index: '3',
-            title: '表格',
+            title: '订单信息',
             subs: [{
               index: 'OrderList',
               title: '订单'
