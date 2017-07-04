@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
     "data": [{
-=======
-    "list": [{
->>>>>>> 4c0569bdddf72079156bc3f576f6b4c66c39f6c7
         "style": "S001",
         "lot": "L01",
         "country": "CN",
@@ -18,7 +14,6 @@
         "lot": "L03",
         "country": "CN",
         "deliver": "2017-07-01"
-<<<<<<< HEAD
     }],
     "pagination": {
         "total": 15,
@@ -28,7 +23,4 @@
         "from": 1,
         "to": 15
     }
-=======
-    }]
->>>>>>> 4c0569bdddf72079156bc3f576f6b4c66c39f6c7
 }
